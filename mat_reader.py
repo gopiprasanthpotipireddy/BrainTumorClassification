@@ -11,9 +11,9 @@ from sklearn.utils import shuffle
 
 
 f=[]
-file_path="C:/Users/HOME/Desktop/PRASANTH/brainTumorDataPublic_1766/"
+file_path="C:/Users/HOME/Desktop/PRASANTH/BrainTumourClassification/1512427"
 
-for i in range(700):
+for i in range(3064):
      f.append(h5.File(os.path.join(file_path,str(i+1)+".mat"),'a'))
      
 
@@ -28,9 +28,9 @@ f=h5.File(os.path.join(file_path,"10.mat"),'a')
 """
 
 p=[]
-for i in range(0,700):
+for i in range(3064):
     p.append(mir.Patient('','','','',''))
-    p[i].image=np.mat(f[i]['/cjdata/image'])
+    p[i].image=np.array(f[i]['/cjdata/image'])
     p[i].PID=np.array(f[i]['/cjdata/PID'])
     p[i].label=f[i]['/cjdata/label'][0][0]
     p[i].tumorBorder=f[i]['/cjdata/tumorBorder'][0]
@@ -40,7 +40,7 @@ columns =['PID', 'image', 'label', 'tumorBorder', 'tumorMask']
 
 d={'PID':[], 'image':[], 'label':[], 'tumorBorder':[], 'tumorMask':[]}
 
-for i in range(700):
+for i in range(1000):
     d['PID'].append(p[i].PID)
     d['image'].append(p[i].image)
     d['label'].append(p[i].label)
@@ -54,9 +54,35 @@ Patient_data=pd.DataFrame(list(d.values()),columns)
 Patient_data=Patient_data.transpose()
 
 #preprocessing image datafor training x_train
-image_train=np.array(d['image'])
+
+
+#files with correpted images
+count=0
+for i in range(3064): 
+     if np.array(p[i].image).shape[0]!= 512 or np.array(p[i].image).shape[1]!=512:
+         print("worst")
+         print(i)
+         count+=1
+
+#training images only having (512,512)
+image_train=[]
+label_train=[]
+         
+for i in range(1207,3064):
+    image_train.append(p[i].image)
+    label_train.append(p[i].label)
+
+
+
+x_train=np.array(image_train)
+label_train=np.array(d['label'])
+np.concatenate(x_train,np.array(image_train))
+
+np.mat(d['image']).shape
 
 #feature reduction  formula X = X.reshape(X.shape[0]*X.shape[1]*X.shape[2],X.shape[3]).T
+
+
 
 image_train= image_train.reshape(image_train.shape[0],image_train.shape[1]*image_train.shape[2])
 
