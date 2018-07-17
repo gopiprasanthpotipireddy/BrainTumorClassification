@@ -27,12 +27,8 @@ Representation." PloS one 11.6 (2016). Matlab source codes are available on gith
 https://github.com/chengjun583/brainTumorRetrieval
 
 -----
-Jun Cheng
-School of Biomedical Engineering
-Southern Medical University, Guangzhou, China
-Email: chengjun583@qq.com
 
-
+These are the images with (256,256) pixels while all remaining in the 3064 images are (512,512)
 #Correpted images
 worst
 954
