@@ -28,35 +28,22 @@ https://github.com/chengjun583/brainTumorRetrieval
 
 -----
 
-These are the images with (256,256) pixels while all remaining in the 3064 images are (512,512)
-#Correpted images
-worst
+#These are the images with (256,256) pixels while all remaining in the 3064 images are (512,512)
+#Corrupted images
 954
-worst
 955
-worst
 956
-worst
 1069
-worst
 1070
-worst
 1071
-worst
 1072
-worst
 1073
-worst
 1074
-worst
 1075
-worst
 1202
-worst
 1203
-worst
 1204
-worst
 1205
-worst
 1206
+
+#Imputed the above images and converted to (512,512)
