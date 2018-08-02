@@ -3,7 +3,7 @@ import h5py as h5
 import numpy as np
 import pandas as pd
 import mat_img_reader as mir
-from sklearn import tree
+from sklearn import tree,naive_bayes
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
@@ -91,14 +91,15 @@ label_train=label_train.reshape(label_train.shape[0],)
 image_train, label_train = shuffle(image_train, label_train, random_state=42)
 
 Tumour_classifier = tree.DecisionTreeClassifier()
-
+Naive_classfier = naive_bayes()
 #testing the model
 
 
 X_train, X_test, y_train, y_test = train_test_split(image_train, label_train, test_size=0.3, random_state=42)
 Tumour_classifier.fit(X_train, y_train)
-
 preds = Tumour_classifier.predict(X_test)
+
+Naive_classfier.fit(X_train, y_train)
 
 accuracy=accuracy_score(y_test,preds)
 print("Accuracy:", accuracy)
