@@ -38,7 +38,7 @@ for i in range(3064):
 #files with corrupted images from (256,256) to (512,512)
 count=0
 for i in range(3064): 
-     #if np.array(d['image'][i]).shape[0]!= 512 or np.array(d['image'][i]).shape[1]!=512:
+     if np.array(d['image'][i]).shape[0]!= 512 or np.array(d['image'][i]).shape[1]!=512:
          #print("images of 256*256 size")
          d['image'][i]=np.concatenate((np.zeros((256,256)),np.zeros((256,256))),axis=0)
          d['image'][i]=np.concatenate((d['image'][i],np.zeros((512,256))),axis=1)
