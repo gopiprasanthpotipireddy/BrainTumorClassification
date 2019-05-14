@@ -5,7 +5,7 @@ limit of repository, we split the whole dataset into 4 subsets, and achive
 them in 4 .zip files with each .zip file containing 766 slices.The 5-fold
 cross-validation indices are also provided.
 
--------
+--------
 This data is organized in matlab data format (.mat file). Each file stores a struct
 containing the following fields for an image:
 
